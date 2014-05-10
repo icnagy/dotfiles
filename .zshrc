@@ -24,17 +24,19 @@ DISABLE_AUTO_UPDATE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(rails git ruby rbenv)
+plugins=(git rails ruby chruby bundler npm node brew hub)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$PATH:/Users/John/.rbenv/shims:/Users/John/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin
+export PATH=/Users/John/.rbenv/shims:/usr/local/bin:/Users/John/bin:/usr/bin:/bin:/usr/sbin:/sbin:usr/X11/bin:/usr/local/git/bin:/usr/local/share/npm/bin:$PATH
 
 unsetopt correct_all
-alias be='bundle exec'
 
 alias poly="source $HOME/.poly/polygot.bash"
 poly load zsh git ruby rails mysql
 
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
