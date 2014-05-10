@@ -4,7 +4,7 @@
 	name = John Gallagher
 	email = john@synapticmishap.co.uk
 [core]
-	editor = sub
 	excludesfile = /Users/John/.gitignore_global
+	editor = subl -w
 [color]
 	ui = true
