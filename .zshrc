@@ -24,7 +24,7 @@ DISABLE_AUTO_UPDATE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rails ruby chruby bundler npm node brew hub)
+plugins=(git rails ruby chruby npm node brew hub)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -40,3 +40,4 @@ poly load zsh git ruby rails mysql
 
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
+function gi() { curl http://www.gitignore.io/api/$@ ;}
