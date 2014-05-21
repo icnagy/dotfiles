@@ -40,17 +40,5 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
-
-function! LoadAndDisplayRSpecQuickfix()
-  if filereadable(g:quickfix_filename) && getfsize(g:quickfix_filename) != 0
-    silent execute ":cfile " . g:quickfix_filename
-    botright cwindow
-    cc
-  else
-    redraw!
-    echohl WarningMsg | echo "Quickfix file " . g:quickfix_filename . " is missing or empty." | echohl None
-  endif
-endfunction
-
-noremap <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
+map <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
 
