@@ -8,3 +8,5 @@
 	editor = subl -w
 [color]
 	ui = true
+[help]
+	autocorrect = 1
