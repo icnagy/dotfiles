@@ -1,7 +1,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-set shell=zsh\ -i
+set shell=zsh
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
