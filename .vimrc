@@ -11,7 +11,7 @@ set expandtab
 
 set tags=./tags,tags
 
-colorscheme evening
+colorscheme slate
 
 set guifont=Monaco:h14
 
@@ -33,6 +33,7 @@ Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'kana/vim-textobj-user'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-unimpaired'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
