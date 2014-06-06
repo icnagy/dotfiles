@@ -13,6 +13,7 @@ set tags=./tags,tags
 
 colorscheme slate
 
+set hidden
 set guifont=Monaco:h14
 
 let g:quickfix_filename = ".git/quickfix.out"
