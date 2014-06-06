@@ -14,7 +14,7 @@ set tags=./tags,tags
 colorscheme slate
 
 set hidden
-set guifont=monaco:h14
+set guifont=Monaco:h14
 
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
@@ -35,7 +35,7 @@ nnoremap <tab> %
 vnoremap <tab> %
 au focuslost * :wa
 
-set relativenumber
+set number
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
