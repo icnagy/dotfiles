@@ -41,3 +41,7 @@ poly load zsh git ruby rails mysql
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
 function gi() { curl http://www.gitignore.io/api/$@ ;}
+
+
+export GEM_HOME=$HOME/gems
+export PATH=$GEM_HOME/bin:$PATH
