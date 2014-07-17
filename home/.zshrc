@@ -28,7 +28,7 @@ plugins=(git rails ruby chruby npm node brew hub)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=/Users/John/.rbenv/shims:/usr/local/bin:/Users/John/bin:/usr/bin:/bin:/usr/sbin:/sbin:usr/X11/bin:/usr/local/git/bin:/usr/local/share/npm/bin:$PATH
+export PATH=$HOME/.rbenv/shims:/usr/local/bin:$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:usr/X11/bin:/usr/local/git/bin:/usr/local/share/npm/bin:$PATH
 
 unsetopt correct_all
 
