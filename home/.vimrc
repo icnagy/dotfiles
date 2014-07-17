@@ -40,7 +40,6 @@ set number
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'johngallagher/vim-rspec'
 Plugin 'tpope/vim-fugitive'
@@ -64,3 +63,4 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 map <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
 
+let g:ctrlp_working_path_mode = 'ra'
