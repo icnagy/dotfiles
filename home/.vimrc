@@ -64,4 +64,5 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 map <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
 
+let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'ra'
