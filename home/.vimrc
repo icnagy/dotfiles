@@ -54,6 +54,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'msanders/cocoa.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
