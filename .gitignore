@@ -21,4 +21,6 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Ignore vim folder as this should be managed by Vundle.
 .vim
