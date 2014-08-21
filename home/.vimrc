@@ -67,3 +67,17 @@ map <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
 
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'ra'
+
+function! LoadAndDisplayRSpecQuickfix()
+  let quickfix_filename = ".git/quickfix.out"
+  if filereadable(quickfix_filename) && getfsize(quickfix_filename) != 0
+    silent execute ":cfile " . quickfix_filename
+    botright cwindow
+    cc
+  else
+    redraw!
+    echohl WarningMsg | echo "Quickfix file " . quickfix_filename . " is missing or empty." | echohl None
+  endif
+endfunction
+ 
+noremap <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
