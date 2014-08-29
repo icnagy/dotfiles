@@ -10,3 +10,7 @@
 	ui = true
 [help]
 	autocorrect = 1
+[pull]
+	default = current
+[push]
+	default = current
