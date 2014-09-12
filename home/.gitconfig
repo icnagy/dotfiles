@@ -14,3 +14,5 @@
 	default = current
 [push]
 	default = current
+[alias]
+	test = "!gi() { curl -s https://www.gitignore.io/api/$@ ;}; gi"
