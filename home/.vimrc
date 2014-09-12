@@ -1,7 +1,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-set shell=zsh
+set shell=/usr/local/bin/zsh
 runtime macros/matchit.vim
 
 set autoread
@@ -10,6 +10,8 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+set vb
+set noerrorbells
 
 set tags=./tags,tags
 
