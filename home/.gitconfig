@@ -5,7 +5,7 @@
 	email = john@synapticmishap.co.uk
 [core]
 	excludesfile = /Users/John/.gitignore_global
-	editor = subl -w
+	editor = mvim -f
 [color]
 	ui = true
 [help]
