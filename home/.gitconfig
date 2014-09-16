@@ -1,5 +1,5 @@
 [merge]
-	tool = opendiff
+	tool = fugitive
 [user]
 	name = John Gallagher
 	email = john@synapticmishap.co.uk
@@ -16,3 +16,13 @@
 	default = current
 [alias]
 	test = "!gi() { curl -s https://www.gitignore.io/api/$@ ;}; gi"
+[diff]
+	tool = fugitive
+[difftool]
+	prompt = false
+[mergetool]
+	prompt = false
+[mergetool "fugitive"]
+	cmd = mvim -f -c \"Gvdiff\" \"$MERGED\"
+[difftool "fugitive"]
+	cmd = mvim -f -c \"Gvdiff\" \"$MERGED\"
