@@ -24,6 +24,7 @@ DISABLE_AUTO_UPDATE="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
+UNBUNDLED_COMMANDS=(irb)
 plugins=(git rails ruby chruby npm node brew hub bundler rake)
 
 source $ZSH/oh-my-zsh.sh
