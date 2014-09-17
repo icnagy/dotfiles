@@ -56,6 +56,7 @@ Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
+Plugin 't9md/vim-ruby-xmpfilter'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -66,6 +67,9 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 map <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
+
+map <F4> <Plug>(xmpfilter-mark)
+map <F5> <Plug>(xmpfilter-run)
 
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'ra'
