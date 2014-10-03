@@ -70,10 +70,7 @@ function migrate_db {
 }
 
 function gpl {
-  git pull --rebase origin $(current_git_branch)
-
-  bundle_install
-  migrate_db
+  git pull --rebase origin $(current_git_branch) && bundle_install && migrate_db
 }
 
 function open_url () {
