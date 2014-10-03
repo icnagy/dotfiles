@@ -2,6 +2,10 @@ function current_git_branch {
   echo `git rev-parse --abbrev-ref HEAD`
 }
 
+function gpl {
+  git pull --rebase origin $(current_git_branch)
+}
+
 alias gc='git commit -m'
 alias ga='git add'
 alias gs='git status -sb'
