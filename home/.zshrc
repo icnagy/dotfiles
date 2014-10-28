@@ -46,3 +46,4 @@ function gi() { curl https://www.gitignore.io/api/$@ ;}
 
 export GEM_HOME=$HOME/gems
 export PATH=$GEM_HOME/bin:$PATH
+export PATH=/usr/local/Cellar:$PATH
