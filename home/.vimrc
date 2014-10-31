@@ -75,6 +75,7 @@ map <F5> <Plug>(xmpfilter-run)
 
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'undo']
 
 function! LoadAndDisplayRSpecQuickfix()
   let quickfix_filename = ".git/quickfix.out"
