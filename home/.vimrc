@@ -67,6 +67,9 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 map <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
 
+vmap <Leader>x :!tidy -q -wrap 150 --indent yes --show-errors 0 -xml<CR>
+
+
 map <F4> <Plug>(xmpfilter-mark)
 map <F5> <Plug>(xmpfilter-run)
 
