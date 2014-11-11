@@ -90,3 +90,6 @@ function! LoadAndDisplayRSpecQuickfix()
 endfunction
  
 noremap <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
+
+" Disable the really annoying tooltips of ruby-vim
+setlocal balloonexpr=
