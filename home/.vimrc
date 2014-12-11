@@ -69,6 +69,17 @@ map <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
 
 vmap <Leader>x :!tidy -q -wrap 150 --indent yes --show-errors 0 -xml<CR>
 
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 map <F4> <Plug>(xmpfilter-mark)
 map <F5> <Plug>(xmpfilter-run)
