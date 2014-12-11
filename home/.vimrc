@@ -56,6 +56,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 't9md/vim-ruby-xmpfilter'
 Plugin 'vim-scripts/EasyGrep'
 Plugin 'tpope/vim-abolish'
+Plugin 'scrooloose/syntastic'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
