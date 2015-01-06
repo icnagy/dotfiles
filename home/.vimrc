@@ -4,6 +4,7 @@ filetype off                  " required
 set shell=/usr/local/bin/zsh
 runtime macros/matchit.vim
 
+set nowrap
 set autoread
 set noswapfile
 set tabstop=2
