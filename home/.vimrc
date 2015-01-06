@@ -13,7 +13,6 @@ set shiftwidth=2
 set expandtab
 set vb
 set noerrorbells
-
 set tags=./tags,tags
 set hidden
 set guifont=Monaco:h14
@@ -66,7 +65,6 @@ Plugin 'rizzatti/dash.vim'
 Plugin 'krisajenkins/vim-pipe'
 Plugin 'krisajenkins/vim-postgresql-syntax'
 
-
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -77,6 +75,7 @@ map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 map <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
 
+" HTML Tidy
 vmap <Leader>x :!tidy -q -wrap 150 --indent yes --show-errors 0 -xml<CR>
 
 " The Silver Searcher
@@ -91,17 +90,21 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-let b:vimpipe_command="less"
+" For sql files connect to a local postgres database
+let g:vimpipe_silent=1
 autocmd FileType sql let b:vimpipe_command="psql -d lapsus_development -U root"
 autocmd FileType sql let b:vimpipe_filetype="postgresql"
 
+" Nice ruby playground
 map <F4> <Plug>(xmpfilter-mark)
 map <F5> <Plug>(xmpfilter-run)
 
+" Ctrl P
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'undo']
 
+" Vim Rspec
 function! LoadAndDisplayRSpecQuickfix()
   let quickfix_filename = ".git/quickfix.out"
   if filereadable(quickfix_filename) && getfsize(quickfix_filename) != 0
@@ -116,9 +119,8 @@ endfunction
  
 noremap <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
 
+" Dash
 :nmap <silent> <leader>d <Plug>DashSearch
 let g:dash_map = {
         \ 'ruby' : ['rails', 'ruby']
         \ }
-
-
