@@ -57,6 +57,10 @@ Plugin 't9md/vim-ruby-xmpfilter'
 Plugin 'vim-scripts/EasyGrep'
 Plugin 'tpope/vim-abolish'
 Plugin 'scrooloose/syntastic'
+Plugin 'rizzatti/dash.vim'
+Plugin 'krisajenkins/vim-pipe'
+Plugin 'krisajenkins/vim-postgresql-syntax'
+
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -82,6 +86,10 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
+let b:vimpipe_command="less"
+autocmd FileType sql let b:vimpipe_command="psql -d lapsus_development -U root"
+autocmd FileType sql let b:vimpipe_filetype="postgresql"
+
 map <F4> <Plug>(xmpfilter-mark)
 map <F5> <Plug>(xmpfilter-run)
 
@@ -103,5 +111,9 @@ endfunction
  
 noremap <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
 
-" Disable the really annoying tooltips of ruby-vim
-setlocal balloonexpr=
+:nmap <silent> <leader>d <Plug>DashSearch
+let g:dash_map = {
+        \ 'ruby' : ['rails', 'ruby']
+        \ }
+
+
