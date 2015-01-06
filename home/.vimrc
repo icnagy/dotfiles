@@ -15,11 +15,17 @@ set vb
 set noerrorbells
 
 set tags=./tags,tags
-
-colorscheme slate
-
 set hidden
 set guifont=Monaco:h14
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set hlsearch
+set number
+
+colorscheme slate
 
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
@@ -29,12 +35,7 @@ nnoremap <c-l> <c-w>l
 let g:quickfix_filename = ".git/quickfix.out"
 let g:rspec_command = "silent !~/.vim/bundle/vim-rspec/bin/os_x_iterm 'clear && rspec -f RSpec::Core::Formatters::VimQuickfixFormatter -r ~/.vim/bundle/vim-rspec/plugin/formatter/vim_quickfix_formatter.rb --out ".g:quickfix_filename." --format progress {spec}'"
 
-set ignorecase
-set smartcase
-set gdefault
-set incsearch
-set showmatch
-set hlsearch
+" Remove highlighting
 nnoremap <leader><space> :noh<cr>
 au focuslost * :wa
 
