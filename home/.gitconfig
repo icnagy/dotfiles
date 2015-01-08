@@ -6,6 +6,7 @@
 [core]
 	excludesfile = /Users/John/.gitignore_global
 	editor = mvim -f
+	whitespace = cr-at-eol
 [color]
 	ui = true
 [help]
