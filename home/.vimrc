@@ -34,7 +34,7 @@ nnoremap <c-l> <c-w>l
 
 " Rspec.vim
 let g:quickfix_filename = ".git/quickfix.out"
-let g:rspec_command = "silent !~/.vim/bundle/vim-rspec/bin/os_x_iterm 'clear && rspec -f RSpec::Core::Formatters::VimQuickfixFormatter -r ~/.vim/bundle/vim-rspec/plugin/formatter/vim_quickfix_formatter.rb --out ".g:quickfix_filename." --format progress {spec}'"
+let g:rspec_command = "silent !~/.vim/bundle/vim-rspec/bin/os_x_iterm 'clear && rspec  --out ".g:quickfix_filename." --format progress {spec}'"
 
 " Remove highlighting
 nnoremap <leader><space> :noh<cr>
