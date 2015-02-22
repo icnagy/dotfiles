@@ -139,5 +139,5 @@ nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR>
 " Dash
 :nmap <silent> <leader>d <Plug>DashSearch
 let g:dash_map = {
-        \ 'ruby' : ['rails', 'ruby']
+        \ 'ruby' : ['osx', 'rails', 'ruby']
         \ }
