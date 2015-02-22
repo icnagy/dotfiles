@@ -24,7 +24,12 @@ set showmatch
 set hlsearch
 set number
 
+set lazyredraw
+set background=dark
+let base16colorspace=256
+set t_Co=256
 colorscheme slate
+syntax enable
 
 " Window Movement
 nnoremap <c-h> <c-w>h
