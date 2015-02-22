@@ -72,6 +72,8 @@ Plugin 'krisajenkins/vim-pipe'
 Plugin 'krisajenkins/vim-postgresql-syntax'
 Plugin 'michaelavila/selecta.vim'
 Plugin 'vim-scripts/CSApprox'
+Plugin 'vim-scripts/SQLUtilities'
+Plugin 'vim-scripts/Align'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -126,6 +128,13 @@ function! LoadAndDisplayRSpecQuickfix()
 endfunction
  
 noremap <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
+
+vmap <silent>sf        <Plug>SQLU_Formatter<CR>
+nmap <silent>scl       <Plug>SQLU_CreateColumnList<CR>
+nmap <silent>scd       <Plug>SQLU_GetColumnDef<CR>
+nmap <silent>scdt      <Plug>SQLU_GetColumnDataType<CR>
+nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR>
+
 
 " Dash
 :nmap <silent> <leader>d <Plug>DashSearch
