@@ -70,6 +70,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'rizzatti/dash.vim'
 Plugin 'krisajenkins/vim-pipe'
 Plugin 'krisajenkins/vim-postgresql-syntax'
+Plugin 'michaelavila/selecta.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
