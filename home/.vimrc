@@ -23,6 +23,7 @@ set incsearch
 set showmatch
 set hlsearch
 set number
+set laststatus=2
 
 set lazyredraw
 set background=dark
