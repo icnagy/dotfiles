@@ -142,3 +142,34 @@ nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR>
 let g:dash_map = {
         \ 'ruby' : ['osx', 'rails', 'ruby']
         \ }
+
+" Custom experimental functions
+ruby require 'rubygems'; require 'nokogiri'; require 'fileutils'
+function! GrabCodeBlock()
+  ruby << RUBY
+  source = `osascript << 'END'
+  tell application "Google Chrome"
+    tell window 1
+      tell active tab
+        set sourcehtml to execute javascript "document.documentElement.outerHTML"
+        sourcehtml
+      end tell
+    end tell
+  end tell
+END`
+
+doc = Nokogiri::HTML('<!DOCTYPE html>' + source)
+code = doc.css('pre').map(&:content).map { |l| l.gsub("\n", '//n') }.join("\n")
+File.write('.grabba', code)
+source = `echo $(cat .grabba | selecta)`
+FileUtils.rm_rf('.grabba')
+current_line_number = $curbuf.line_number
+source.split('//n').each do |line|
+$curbuf.append(current_line_number, line.strip)
+  current_line_number += 1
+end
+RUBY
+  redraw!
+endfunction
+
+map <Leader>cb :call GrabCodeBlock()<CR>
