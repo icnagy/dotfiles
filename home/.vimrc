@@ -152,13 +152,14 @@ function! GrabCodeBlock()
     tell window 1
       tell active tab
         set sourcehtml to execute javascript "document.documentElement.outerHTML"
-        sourcehtml
+        set doctype to execute javascript "document.doctype"
+        doctype & sourcehtml
       end tell
     end tell
   end tell
 END`
 
-doc = Nokogiri::HTML('<!DOCTYPE html>' + source)
+doc = Nokogiri::HTML(source)
 code = doc.css('pre').map(&:content).map { |l| l.gsub("\n", '//n') }.join("\n")
 File.write('.grabba', code)
 source = `echo $(cat .grabba | selecta)`
@@ -172,4 +173,4 @@ RUBY
   redraw!
 endfunction
 
-map <Leader>cb :call GrabCodeBlock()<CR>
+map <Leader>gb :call GrabCodeBlock()<CR>
