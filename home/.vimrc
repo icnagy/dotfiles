@@ -130,47 +130,29 @@ endfunction
  
 noremap <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
 
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+map <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
+map <Leader>b :w<CR>:!clear; bacon -a -q<CR>
+
 vmap <silent>sf        <Plug>SQLU_Formatter<CR>
 nmap <silent>scl       <Plug>SQLU_CreateColumnList<CR>
 nmap <silent>scd       <Plug>SQLU_GetColumnDef<CR>
 nmap <silent>scdt      <Plug>SQLU_GetColumnDataType<CR>
 nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR>
 
-
 " Dash
-:nmap <silent> <leader>d <Plug>DashSearch
+:nmap <silent> <leader>w <Plug>DashSearch
 let g:dash_map = {
         \ 'ruby' : ['osx', 'rails', 'ruby']
         \ }
 
 " Custom experimental functions
-ruby require 'rubygems'; require 'nokogiri'; require 'fileutils'
-function! GrabCodeBlock()
-  ruby << RUBY
-  source = `osascript << 'END'
-  tell application "Google Chrome"
-    tell window 1
-      tell active tab
-        set sourcehtml to execute javascript "document.documentElement.outerHTML"
-        set doctype to execute javascript "document.doctype"
-        doctype & sourcehtml
-      end tell
-    end tell
-  end tell
-END`
-
-doc = Nokogiri::HTML(source)
-code = doc.css('pre').map(&:content).map { |l| l.gsub("\n", '//n') }.join("\n")
-File.write('.grabba', code)
-source = `echo $(cat .grabba | selecta)`
-FileUtils.rm_rf('.grabba')
-current_line_number = $curbuf.line_number
-source.split('//n').each do |line|
-$curbuf.append(current_line_number, line.strip)
-  current_line_number += 1
-end
-RUBY
-  redraw!
+function! Grabber()
+  :r !echo $(osascript -e 'tell application "Google Chrome"' -e 'tell window 1' -e 'tell active tab' -e 'execute javascript "new XMLSerializer().serializeToString(document);"' -e 'end tell' -e 'end tell' -e 'end tell' | nokogiri -e 'puts $_.css("pre").map {|c| c.text.gsub("\n", "\\n") }' | selecta)
 endfunction
 
-map <Leader>gb :call GrabCodeBlock()<CR>
+map <Leader>gb :call Grabber()<CR>
+
