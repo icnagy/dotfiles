@@ -47,3 +47,6 @@ function gi() { curl https://www.gitignore.io/api/$@ ;}
 export GEM_HOME=$HOME/gems
 export PATH=$GEM_HOME/bin:$PATH
 export PATH=/usr/local/Cellar:$PATH
+
+alias cq="echo 'Running reek...' && reek app && echo 'Running flog...' && flog app && echo 'Running rubocop...' && rubocop -a"
+
