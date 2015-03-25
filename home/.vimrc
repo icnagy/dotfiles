@@ -76,20 +76,21 @@ Plugin 'vim-scripts/CSApprox'
 Plugin 'vim-scripts/SQLUtilities'
 Plugin 'vim-scripts/Align'
 
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
-map <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
+" Nice ruby playground
+map <Leader>d <Plug>(xmpfilter-mark)
+map <Leader>f <Plug>(xmpfilter-run)
 
 " HTML Tidy
 vmap <Leader>x :!tidy -q -wrap 150 --indent yes --show-errors 0 -xml<CR>
 
-" The Silver Searcher
+" Ctrl P
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'undo']
+
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -106,38 +107,36 @@ let g:vimpipe_silent=1
 autocmd FileType sql let b:vimpipe_command="psql -d lapsus_development -U root"
 autocmd FileType sql let b:vimpipe_filetype="postgresql"
 
-" Nice ruby playground
-map <F4> <Plug>(xmpfilter-mark)
-map <F5> <Plug>(xmpfilter-run)
-
-" Ctrl P
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'undo']
-
-" Vim Rspec
-function! LoadAndDisplayRSpecQuickfix()
-  let quickfix_filename = ".git/quickfix.out"
-  if filereadable(quickfix_filename) && getfsize(quickfix_filename) != 0
-    silent execute ":cfile " . quickfix_filename
-    botright cwindow
-    cc
+"map <Leader>t :call RunCurrentSpecFile()<CR>
+"map <Leader>s :call RunNearestSpec()<CR>
+"map <Leader>l :call RunLastSpec()<CR>
+"map <Leader>a :call RunAllSpecs()<CR>
+function! RunThisMacBaconTest() 
+  :wall
+  :silent !clear; rake spec files=%
+  if v:shell_error > 0
+    :!echo "Errors in test shown above."
   else
-    redraw!
-    echohl WarningMsg | echo "Quickfix file " . quickfix_filename . " is missing or empty." | echohl None
+    :redraw!
+    :echo "This test file is passing."
   endif
 endfunction
- 
-noremap <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
-
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+function! RunAllMacBaconTests() 
+  :wall
+  :silent !clear; rake spec
+  if v:shell_error > 0
+    :!echo "Errors in test shown above."
+  else
+    :redraw!
+    :echo "All tests are passing."
+  endif
+endfunction
+  
+map <Leader>ss :call RunThisMacBaconTest()<CR>
+map <Leader>aa :call RunMacBaconTests()<CR>
 
 map <Leader>b :wall<CR>:!clear; bacon -a -q<CR>
-map <Leader>mb :wall<CR>:!clear; rake spec<CR>
-map <Leader>q :wall<CR>:!clear; echo 'Running reek...' && reek app && echo 'Running flog...' && flog app && echo 'Running rubocop...' && rubocop -a<CR>
+noremap <Leader>q :wall<CR>:!clear; echo 'Running reek...' && reek app && echo 'Running flog...' && flog app && echo 'Running rubocop...' && rubocop -a<CR>
 
 vmap <silent>sf        <Plug>SQLU_Formatter<CR>
 nmap <silent>scl       <Plug>SQLU_CreateColumnList<CR>
@@ -145,15 +144,9 @@ nmap <silent>scd       <Plug>SQLU_GetColumnDef<CR>
 nmap <silent>scdt      <Plug>SQLU_GetColumnDataType<CR>
 nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR>
 
-" Dash
-:nmap <silent> <leader>w <Plug>DashSearch
-let g:dash_map = {
-        \ 'ruby' : ['osx', 'rails', 'ruby']
-        \ }
-
 " Custom experimental functions
 function! Grabber()
-  :r !echo $(osascript -e 'tell application "Google Chrome"' -e 'tell window 1' -e 'tell active tab' -e 'execute javascript "new XMLSerializer().serializeToString(document);"' -e 'end tell' -e 'end tell' -e 'end tell' | nokogiri -e 'puts $_.css("pre").map {|c| c.text.gsub("\n", "\\n") }' | selecta)
+  :r !echo $(osascript -e 'tell application "Google Chrome"' -e 'tell window 1' -e 'tell active tab' -e 'execute javascript "new XMLSerializer().serializeToString(document);"' -e 'end tell' -e 'end tell' -e 'end tell' | nokogiri -e 'puts $_.css("code,pre").map {|c| c.text.gsub("\n", "\\n") }' | selecta)
 endfunction
 
 map <Leader>gb :call Grabber()<CR>
