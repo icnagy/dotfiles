@@ -133,7 +133,7 @@ function! RunAllMacBaconTests()
 endfunction
   
 map <Leader>ss :call RunThisMacBaconTest()<CR>
-map <Leader>aa :call RunMacBaconTests()<CR>
+map <Leader>aa :call RunAllMacBaconTests()<CR>
 
 map <Leader>b :wall<CR>:!clear; bacon -a -q<CR>
 noremap <Leader>q :wall<CR>:!clear; echo 'Running reek...' && reek app && echo 'Running flog...' && flog app && echo 'Running rubocop...' && rubocop -a<CR>
