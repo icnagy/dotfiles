@@ -49,3 +49,6 @@ setopt interactivecomments
 # Setup editor for long commands
 export EDITOR="mvim -f"
 
+# Setup kick ass zmv and mmv
+autoload -U zmv
+alias mmv='noglob zmv -W'
