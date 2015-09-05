@@ -167,6 +167,9 @@ map <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
 map <Leader>b :wall<CR>:!clear; bacon -a -q<CR>
 noremap <Leader>q :wall<CR>:!clear; echo 'Running reek...' && reek app && echo 'Running flog...' && flog app && echo 'Running rubocop...' && rubocop -a<CR>
 
+" Open finder in netrw directory
+map <Leader>fi :!open '%:h'<CR>
+
 vmap <silent>sf        <Plug>SQLU_Formatter<CR>
 nmap <silent>scl       <Plug>SQLU_CreateColumnList<CR>
 nmap <silent>scd       <Plug>SQLU_GetColumnDef<CR>
