@@ -23,6 +23,7 @@
 	prompt = false
 [mergetool]
 	prompt = false
+	keepBackup = false
 [mergetool "fugitive"]
 	cmd = mvim -f -c \"Gvdiff\" \"$MERGED\"
 [difftool "fugitive"]
