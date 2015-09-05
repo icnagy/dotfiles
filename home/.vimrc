@@ -77,7 +77,18 @@ Plugin 'krisajenkins/vim-postgresql-syntax'
 Plugin 'michaelavila/selecta.vim'
 Plugin 'vim-scripts/CSApprox'
 Plugin 'vim-scripts/SQLUtilities'
-Plugin 'vim-scripts/Align'
+Plugin 'mkitt/browser-refresh.vim'
+Plugin 'tpope/vim-eunuch'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-surround'
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-f>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsEditSplit="context"
+set runtimepath+=~/.vim/UltiSnips
 
 
 call vundle#end()            " required
