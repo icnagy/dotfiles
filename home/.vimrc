@@ -1,7 +1,9 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-set shell=/usr/local/bin/zsh
+set lines=999 columns=999
+
+set shell=$SHELL
 runtime macros/matchit.vim
 
 set nowrap
