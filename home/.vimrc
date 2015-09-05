@@ -176,10 +176,28 @@ nmap <silent>scd       <Plug>SQLU_GetColumnDef<CR>
 nmap <silent>scdt      <Plug>SQLU_GetColumnDataType<CR>
 nmap <silent>scp       <Plug>SQLU_CreateProcedure<CR>
 
-" Custom experimental functions
+" Dash
+:nmap <silent> <leader>w <Plug>DashSearch
+let g:dash_map = {
+        \ 'ruby' : ['osx', 'rails', 'ruby']
+        \ }
+
+" Grab code from a page
 function! Grabber()
   :r !echo $(osascript -e 'tell application "Google Chrome"' -e 'tell window 1' -e 'tell active tab' -e 'execute javascript "new XMLSerializer().serializeToString(document);"' -e 'end tell' -e 'end tell' -e 'end tell' | nokogiri -e 'puts $_.css("code,pre").map {|c| c.text.gsub("\n", "\\n") }' | selecta)
 endfunction
-
 map <Leader>gb :call Grabber()<CR>
 
+" Reload Chrome
+function! ReloadChrome()
+  :r !osascript -e 'tell application "Google Chrome" to reload active tab of window 1'
+endfunction
+map <silent><leader>r :wall!<CR>:call ReloadChrome()<CR>
+
+" Tabularize
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
