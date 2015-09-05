@@ -153,9 +153,16 @@ function! RunAllMacBaconTests()
     :echo "All tests are passing."
   endif
 endfunction
-  
-map <Leader>ss :call RunThisMacBaconTest()<CR>
-map <Leader>aa :call RunAllMacBaconTests()<CR>
+ 
+noremap <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
+
+map <Leader>aa :wall<CR>:Rake test<CR>
+map <Leader>at :wall<CR>:Rake<CR>
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+map <Leader>q :call LoadAndDisplayRSpecQuickfix()<CR>
 
 map <Leader>b :wall<CR>:!clear; bacon -a -q<CR>
 noremap <Leader>q :wall<CR>:!clear; echo 'Running reek...' && reek app && echo 'Running flog...' && flog app && echo 'Running rubocop...' && rubocop -a<CR>
