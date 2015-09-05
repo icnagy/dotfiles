@@ -42,6 +42,7 @@ poly load zsh git ruby rails mysql
 
 function gi() { curl https://www.gitignore.io/api/$@ ;}
 
+alias cq="echo 'Running flog...' && flog app && echo 'Running rubocop...' && rubocop -a"
 
 export GEM_HOME=$HOME/gems
 export PATH=$GEM_HOME/bin:$PATH
