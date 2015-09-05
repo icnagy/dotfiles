@@ -31,7 +31,7 @@ set lazyredraw
 set background=dark
 let base16colorspace=256
 set t_Co=256
-colorscheme slate
+colorscheme grb256
 syntax enable
 
 " Window Movement
