@@ -44,9 +44,8 @@ function gi() { curl https://www.gitignore.io/api/$@ ;}
 
 alias cq="echo 'Running flog...' && flog app && echo 'Running rubocop...' && rubocop -a"
 
-export GEM_HOME=$HOME/gems
-export PATH=$GEM_HOME/bin:$PATH
-export PATH=/usr/local/Cellar:$PATH
+setopt interactivecomments
 
-alias cq="echo 'Running reek...' && reek app && echo 'Running flog...' && flog app && echo 'Running rubocop...' && rubocop -a"
+# Setup editor for long commands
+export EDITOR="mvim -f"
 
