@@ -40,8 +40,6 @@ poly load zsh git ruby rails mysql
 
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
 function gi() { curl https://www.gitignore.io/api/$@ ;}
 
 
