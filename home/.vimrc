@@ -122,15 +122,22 @@ let g:vimpipe_invoke_map="<Leader>w"
 autocmd FileType sql let b:vimpipe_command="mysql -D arnoldclark__co__uk -ujohn -h dev.arnoldclark.com -p"
 autocmd FileType sql let b:vimpipe_filetype="mysql"
 
-"map <Leader>t :call RunCurrentSpecFile()<CR>
-"map <Leader>s :call RunNearestSpec()<CR>
-"map <Leader>l :call RunLastSpec()<CR>
-"map <Leader>a :call RunAllSpecs()<CR>
-function! RunThisMacBaconTest() 
-  :wall
-  :silent !clear; rake spec files=%
-  if v:shell_error > 0
-    :!echo "Errors in test shown above."
+" Nice ruby playground
+map <F4> <Plug>(xmpfilter-mark)
+map <F5> <Plug>(xmpfilter-run)
+
+" Ctrl P
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'undo']
+
+" Vim Rspec
+function! LoadAndDisplayRSpecQuickfix()
+  let quickfix_filename = ".git/quickfix.out"
+  if filereadable(quickfix_filename) && getfsize(quickfix_filename) != 0
+    silent execute ":cfile " . quickfix_filename
+    botright cwindow
+    copen
   else
     :redraw!
     :echo "This test file is passing."
