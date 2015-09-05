@@ -118,8 +118,9 @@ endif
 
 " For sql files connect to a local postgres database
 let g:vimpipe_silent=1
-autocmd FileType sql let b:vimpipe_command="psql -d lapsus_development -U root"
-autocmd FileType sql let b:vimpipe_filetype="postgresql"
+let g:vimpipe_invoke_map="<Leader>w"
+autocmd FileType sql let b:vimpipe_command="mysql -D arnoldclark__co__uk -ujohn -h dev.arnoldclark.com -p"
+autocmd FileType sql let b:vimpipe_filetype="mysql"
 
 "map <Leader>t :call RunCurrentSpecFile()<CR>
 "map <Leader>s :call RunNearestSpec()<CR>
