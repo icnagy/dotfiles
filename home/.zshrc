@@ -25,11 +25,12 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 UNBUNDLED_COMMANDS=(irb)
-plugins=(git rails ruby chruby npm node brew hub bundler rake)
+plugins=(bundler git rails ruby chruby npm node brew hub rake)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$HOME/.rbenv/shims:/usr/local/bin:$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:usr/X11/bin:/usr/local/git/bin:/usr/local/share/npm/bin:$PATH
+export PKG_CONFIG_PATH="/opt/local/lib/pkgconfig:$PKG_CONFIG_PATH"
+export GEM_HOME=$HOME/gems
 
 unsetopt correct_all
 
